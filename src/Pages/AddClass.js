@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Data } from "../components/Data";
 import * as XLSX from "xlsx";
 import { toast } from "react-hot-toast";
@@ -7,7 +7,7 @@ const AddClass = () => {
   // on change states
   const [excelFile, setExcelFile] = useState(null);
   const [excelFileError, setExcelFileError] = useState(null);
-
+  const fileInputRef = useRef(null);
   // submit
   const [excelData, setExcelData] = useState(null);
   // it will contain array of objects
@@ -47,13 +47,13 @@ const AddClass = () => {
       const worksheet = workbook.Sheets[worksheetName];
       const data = XLSX.utils.sheet_to_json(worksheet);
       setExcelData(data);
-      const newArray = data.map(({ __rowNum__, ...rest }) => rest);
+      const newArray = data.map(({ __rowNum__, SL, ...rest }) => rest);
 
       //   const datas = data.find();
       console.log(newArray);
 
       //   Save excel data into database
-      fetch("http://localhost:5000/data", {
+      fetch("https://schedule-app-server.vercel.app/schedules", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(newArray),
@@ -61,7 +61,8 @@ const AddClass = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.acknowledged) {
-            toast.success("Data added");
+            toast.success("Data Save Successfully");
+            fileInputRef.current.value = "";
           }
         });
     } else {
@@ -69,54 +70,62 @@ const AddClass = () => {
     }
   };
   return (
-    <div>
+    <div className="h-screen flex flex-row justify-center items-center">
       {/* upload file section */}
-      <div className="form">
+      <div className="form px-2 lg:px-0 md:px-0 ">
         <form className="form-group" autoComplete="off" onSubmit={handleSubmit}>
-          <label>
+          <label className="text-center text-xl font-semibold">
             <h5>Upload Excel file</h5>
           </label>
           <br></br>
-          <input
-            type="file"
-            className="form-control"
-            onChange={handleFile}
-            required
-          ></input>
-          {excelFileError && (
-            <div className="text-danger" style={{ marginTop: 5 + "px" }}>
-              {excelFileError}
-            </div>
-          )}
-          <button
-            type="submit"
-            className="btn btn-success"
-            style={{ marginTop: 5 + "px" }}
-          >
-            Submit
-          </button>
+          <div className="flex flex-col gap-2 justify-center items-center">
+            <input
+              ref={fileInputRef}
+              type="file"
+              className="form-control file-input file-input-bordered rounded-md w-full max-w-xs"
+              onChange={handleFile}
+              required
+            ></input>
+            {excelFileError && (
+              <div className="text-red-600 font-semibold flex flex-row justify-center items-center">
+                {excelFileError}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className="bg-red-400 hover:bg-red-500 text-white text-sm px-12 mt-3 py-2  border rounded-full"
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </div>
 
-      <br></br>
-      <hr></hr>
+      {/* <br></br> */}
+      {/* <hr className="my-3"></hr> */}
 
       {/* view file section */}
-      <h5>View Excel file</h5>
+      {/* <label className="text-center text-xl font-semibold">
+        <h5 className="my-2">View Excel file</h5>
+      </label>
       <div className="viewer">
         {excelData === null && <>No file selected</>}
         {excelData !== null && (
           <div className="table-responsive">
             <table className="table">
               <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
-                  <th scope="col">Gender</th>
-                  <th scope="col">Country</th>
-                  <th scope="col">Age</th>
-                  <th scope="col">Date</th>
+                <tr className="text-center">
+                  <th scope="col">SL</th>
+                  <th scope="col">Faculty Name</th>
+                  <th scope="col">Semester</th>
+                  <th scope="col">Year</th>
+                  <th scope="col">Batch</th>
+                  <th scope="col">Room Number</th>
+                  <th>Subject</th>
+                  <th scope="col">Course Code</th>
+                  <th scope="col">Day</th>
+                  <th scope="col">Time</th>
                 </tr>
               </thead>
               <tbody>
@@ -125,7 +134,7 @@ const AddClass = () => {
             </table>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

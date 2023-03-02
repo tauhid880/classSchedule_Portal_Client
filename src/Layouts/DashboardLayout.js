@@ -14,7 +14,7 @@ import Logo from "../assets/logo.png";
 import { AuthContext } from "../Contexts/AuthProvider";
 const DashboardLayout = () => {
   const navigate = useNavigate();
-  const { user, logOut } = useContext(AuthContext);
+  const { logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -36,7 +36,7 @@ const DashboardLayout = () => {
       icon: HiChatBubbleBottomCenterText,
     },
     {
-      name: "Schedule",
+      name: "Schedules",
       link: "/dashboard/schedule",
       icon: BsCalendarCheck,
     },
@@ -50,7 +50,7 @@ const DashboardLayout = () => {
   return (
     <section className="flex">
       <div
-        className={`bg-[#191825] min-h-screen ${
+        className={`bg-[#191825] ${
           open ? "w-72" : "w-16"
         } duration-500 text-gray-100 `}
       >
@@ -140,7 +140,7 @@ const DashboardLayout = () => {
           </Link>
         </div>
       </div>
-      <div className="h-screen w-full bg-[#F5F5F5]">
+      <div className="w-full">
         <Outlet></Outlet>
       </div>
     </section>

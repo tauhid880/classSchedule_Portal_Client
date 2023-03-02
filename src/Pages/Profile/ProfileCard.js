@@ -8,9 +8,9 @@ import Department from "../../assets/department.png";
 const ProfileCard = ({ user }) => {
   const { name, email, facultyId, image, designation } = user;
   return (
-    <div className="relative lg:top-32 md:top-40 top-20">
+    <div className="relative">
       <section className="flex flex-col items-center justify-center">
-        <div className=" rounded-md shadow-xl lg:h-2/4 p-5 grid grid-cols-1 content-center justify-items-center gap-3 bg-gradient-to-t from-[#BAD7E9] to-[#EDEDED] hover:bg-[#F7EFE5] my-5 border-t-[#FF9F9F] border-t-4">
+        <div className=" rounded-md shadow-xl p-10  bg-gradient-to-t from-[#BAD7E9] to-[#EDEDED] hover:bg-[#F7EFE5]  border-t-[#FF9F9F] border-t-4">
           <div className="avatar">
             <div className="lg:w-40 w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img className="object-fill" alt="Profile" src={image} />
