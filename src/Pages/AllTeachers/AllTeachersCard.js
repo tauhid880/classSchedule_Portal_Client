@@ -1,11 +1,11 @@
 import React from "react";
 import { MdEmail } from "react-icons/md";
-import { HiIdentification } from "react-icons/hi";
 import { BsFilePersonFill } from "react-icons/bs";
-import { FaBook } from "react-icons/fa";
 import ID from "../../assets/id.png";
 import Department from "../../assets/department.png";
-const ProfileCard = ({ user }) => {
+import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
+const AllTeachersCard = ({ user }) => {
   const { name, email, facultyId, image, designation } = user;
   return (
     <section className="relative">
@@ -16,9 +16,14 @@ const ProfileCard = ({ user }) => {
               <img className="object-fill" alt="Profile" src={image} />
             </div>
           </div>
-          <p className="text-black lg:text-base text-sm my-2 lg:m-1">
-            <span className="font-semibold">{name}</span>
-          </p>
+          <div className="">
+            <p className="text-black lg:text-base text-sm my-2 lg:m-1">
+              <span className="font-semibold">{name}</span>
+            </p>
+            {/* <Link>
+              <MdDelete className="text-xl font-semibold text-rose-400"></MdDelete>
+            </Link> */}
+          </div>
         </div>
         <div className="flex flex-col gap-2 justify-end items-start my-3">
           <div className="flex justify-between items-center gap-2 my-1">
@@ -57,4 +62,4 @@ const ProfileCard = ({ user }) => {
   );
 };
 
-export default ProfileCard;
+export default AllTeachersCard;

@@ -21,7 +21,7 @@ const Schedule = () => {
   });
 
   return (
-    <div className="px-10 my-5 rounded-lg min-h-screen">
+    <div className="p-5 lg:p-8 rounded-lg min-h-screen">
       <div className="">
         {isLoading && <Loading></Loading>}
         <Table className="table table-compact w-full relative">
@@ -35,6 +35,7 @@ const Schedule = () => {
               <Th className="normal-case text-sm">Room Number</Th>
               <Th className="normal-case text-sm">Subject</Th>
               <Th className="normal-case text-sm">Course Code</Th>
+              <Th className="normal-case text-sm">Date</Th>
               <Th className="normal-case text-sm">Day</Th>
               <Th className="normal-case text-sm">Time</Th>
             </Tr>

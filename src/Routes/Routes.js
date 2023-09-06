@@ -8,9 +8,10 @@ import Dashboard from "../Pages/Dashboard";
 import Schedule from "../Pages/Schedule";
 import AddMessage from "../Pages/AddMessage";
 import Messages from "../Pages/Messages";
-import AllTeachers from "../Pages/AllTeachers";
+
 import Profile from "../Pages/Profile/Profile";
 import AddClass from "../Pages/AddClass";
+import AllTeachers from "../Pages/AllTeachers/AllTeachers";
 
 export const router = createBrowserRouter([
   {

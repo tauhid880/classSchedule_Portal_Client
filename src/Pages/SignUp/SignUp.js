@@ -82,7 +82,7 @@ const SignUp = () => {
       <section className="h-screen">
         <div className="px-6 h-full text-gray-800">
           <div className="flex xl:justify-center lg:justify-center justify-center items-center flex-wrap h-full g-3">
-            <div className=" xl:w-1/3 lg:w-1/4 md:w-8/12 mb-12 md:mb-0 p-8 bg-[#20262eca] shadow-lg rounded-md border-t-2 border-b-2 border-[#BDCDD6] ">
+            <div className=" my-2 xl:w-1/3 lg:w-1/4 md:w-8/12 mb-12 md:mb-0 p-8 bg-[#20262eca] shadow-lg rounded-md border-t-2 border-b-2 border-[#BDCDD6] ">
               <h1 className="text-2xl text-center py-5 font-bold text-white">
                 Sign Up
               </h1>

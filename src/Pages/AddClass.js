@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Data } from "../components/Data";
+// import { Data } from "../components/Data";
 import * as XLSX from "xlsx";
 import { toast } from "react-hot-toast";
 

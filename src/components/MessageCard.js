@@ -4,7 +4,7 @@ const MessageCard = ({ data }) => {
   const { userName, userImage, userEmail, message, createdAt } = data;
   return (
     <div className="">
-      <article class="rounded-md bg-[#191825] lg:p-4 p-2 lg:w-96 w-64 h-[270px] ">
+      <article class="rounded-md bg-[#191825] lg:p-4 p-2 lg:w-96 min-w-full lg:h-[270px]">
         <div class="flex items-center gap-4">
           <img
             alt="Developer"

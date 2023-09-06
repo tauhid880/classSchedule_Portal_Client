@@ -19,7 +19,7 @@ const Messages = () => {
     },
   });
   return (
-    <div className="min-h-screen flex flex-row flex-wrap gap-2 p-5 justify-start items-start">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 md:gap-6 justify-items-center p-3 lg:p-16 items-center min-h-screen">
       {isLoading && <Loading></Loading>}
       {messages.map((message) => (
         <MessageCard key={message._id} data={message}>

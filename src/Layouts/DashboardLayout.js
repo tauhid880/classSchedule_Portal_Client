@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
 import { HiUserCircle, HiChatBubbleBottomCenterText } from "react-icons/hi2";
 import { BsCalendarCheck } from "react-icons/bs";
+import { useMediaQuery } from "react-responsive";
 import {
   MdOutlineWysiwyg,
   MdLogout,
@@ -48,20 +49,22 @@ const DashboardLayout = () => {
   ];
   const [open, setOpen] = useState(true);
   return (
-    <section className="flex">
+    <section className="flex min-h-screen">
       <div
         className={`bg-[#191825] ${
-          open ? "w-72" : "w-16"
-        } duration-500 text-gray-100 `}
+          open ? "lg:w-72 w-16" : "w-16"
+        } duration-500 text-gray-100  `}
       >
-        <Link to="/dashboard">
+        <Link className="lg:visible invisible" to="/dashboard">
           <img
             alt=""
             src={Logo}
-            className={`p-2 bg-[#fff8f395] ${!open && "invisible "}`}
+            className={`p-2 bg-[#fff8f395] lg:visible invisible ${
+              !open && "invisible "
+            }`}
           />
         </Link>
-        <div className=" p-3 flex flex-col gap-4 relative">
+        <div className=" p-3 flex flex-col gap-3 relative">
           <Link
             onClick={() => setOpen(!open)}
             className="group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md"
@@ -70,10 +73,10 @@ const DashboardLayout = () => {
               <HiMenu size={20} className="cursor-pointe" />
             </div>
             <h2
-              style={{
-                transitionDelay: `${0 + 3}00ms`,
-              }}
-              className={`whitespace-pre duration-500 ${
+              // style={{
+              //   transitionDelay: `${0 + 3}00ms`,
+              // }}
+              className={`whitespace-pre duration-500 lg:visible invisible ${
                 !open && "opacity-0 translate-x-28 overflow-hidden"
               }`}
             >
@@ -97,12 +100,13 @@ const DashboardLayout = () => {
             >
               <div>{React.createElement(menu?.icon, { size: "20" })}</div>
               <h2
-                style={{
-                  transitionDelay: `${index + 3}00ms`,
-                }}
-                className={`whitespace-pre duration-500 ${
+                // style={{
+                //   transitionDelay: `${index + 3}00ms`,
+                // }}
+                className={`whitespace-pre duration-500 
+                ${
                   !open && "opacity-0 translate-x-28 overflow-hidden"
-                }`}
+                } lg:visible invisible`}
               >
                 {menu?.name}
               </h2>
@@ -121,10 +125,10 @@ const DashboardLayout = () => {
           >
             <div>{React.createElement(MdLogout, { size: "20" })}</div>
             <h2
-              style={{
-                transitionDelay: `${5 + 3}00ms`,
-              }}
-              className={`whitespace-pre duration-500 ${
+              // style={{
+              //   transitionDelay: `${5 + 3}00ms`,
+              // }}
+              className={`whitespace-pre duration-500 lg:visible invisible ${
                 !open && "opacity-0 translate-x-28 overflow-hidden"
               }`}
             >
